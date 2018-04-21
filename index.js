@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
 var dbInfo = require('./config/db.js');
+var albumArt = require('album-art');
 
 //GET MONGOOSE STUFF IN ORDER
 var mongoose = require('mongoose');
@@ -36,7 +37,7 @@ app.get('/', (req, res) => {
 require('./routes/playlist.js')(app, PlayList)
 require('./routes/songs.js')(app, Song)
 require('./routes/users.js')(app, User)
-
+require('./routes/covers.js')(app, albumArt)
 
 
 app.listen(6024, function(){

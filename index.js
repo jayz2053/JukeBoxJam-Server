@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 var dbInfo = require('./config/db.js');
 var albumArt = require('album-art');
+var bodyParser = require('body-parser');
 
 //GET MONGOOSE STUFF IN ORDER
 var mongoose = require('mongoose');
@@ -19,7 +20,8 @@ var opts = {
 
 // Route Handler for serving music
 app.use(express.static('Music'));
-app.use(require('body-parser')());
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended: true}));
 
 
 mongoose.connect(dbInfo.settings, opts)

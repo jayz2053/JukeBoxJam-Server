@@ -33,9 +33,9 @@ app.get('/', (req, res) => {
 
 //ALL ROUTING HANDLED IN SEPERATE FILES
 
-require('./routes/playlist.js')(app, Song)
-require('./routes/songs.js')(app)
-require('./routes/users.js')(app)
+require('./routes/playlist.js')(app, PlayList)
+require('./routes/songs.js')(app, Song)
+require('./routes/users.js')(app, User)
 
 
 

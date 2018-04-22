@@ -21,8 +21,9 @@ describe('Saving Records', ()=> {
     testSong.save().then(() => {
       assert(testSong.isNew === false)
       done()
-    }
+    })
   })
+
 
 
 

@@ -17,14 +17,14 @@ var opts = {
 	}
 };
 
-
+mongoose.connect(dbInfo.settings, opts)
 // Route Handler for serving music
 app.use(express.static('Music'));
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}));
 
 
-mongoose.connect(dbInfo.settings, opts)
+
 
 
 

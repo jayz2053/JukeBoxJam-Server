@@ -11,6 +11,21 @@ let PlayList = info.playList;
 describe('Saving Records', ()=> {
 
   // CREATE TESTS
+  it('Saves Song to DB', (done) =>{
+    var testSong = new Song({
+      Artist: 'Jay-Z',
+      Title: 'What More Can I Say?',
+      Album: 'The Black Album'
+    })
+
+    testSong.save().then(() => {
+      assert(testSong.isNew === false)
+      done()
+    }
+  })
+
+
+
   it('Saves User to DB', (done) => {
     var testUser = new User({
       Uname: 'jayz2053',

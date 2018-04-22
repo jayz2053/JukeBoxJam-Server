@@ -1,6 +1,6 @@
 const mocha = require('mocha');
 const assert = require('assert');
-const info  = require('../models/info')
+let info  = require('../models/info.js')
 let User = info.user;
 let Song = info.song;
 let PlayList = info.playList;

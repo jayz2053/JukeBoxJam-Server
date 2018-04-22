@@ -3,7 +3,7 @@ const assert = require('assert');
 let info  = require('../models/info.js')
 let User = info.user;
 let Song = info.song;
-let PlayList = info.playList;
+let PlayList = info.playlist;
 
 
 

@@ -9,7 +9,7 @@ var mongoose = require('mongoose');
 var models = require('./models/info.js');
 var Song = models.song;
 var PlayList = models.playlist;
-var User = models.playlist;
+var User = models.User;
 
 var opts = {
 	server: {

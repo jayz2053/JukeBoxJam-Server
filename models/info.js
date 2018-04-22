@@ -15,8 +15,8 @@ var Song = mongoose.model('Song', songSchema);
 
 //SCHEMA FOR A PLAYLIST
 var playlistSchema = mongoose.Schema({
-	Name: { type: String, required: true }
-	Users: { type: [String], required: true }
+	Name: { type: String, required: true },
+	AuthUsers: { type: [String], required: true },
 	SongList: [songSchema]
 
 });
@@ -26,7 +26,7 @@ var PlayList = mongoose.model('PlayList', playlistSchema);
 
 //SCHEMA FOR A USER
 var userSchema = mongoose.Schema({
-  Uname: { type: String, required: true }
+  Uname: { type: String, required: true },
   Pword: { type: String, required: true }
 });
 

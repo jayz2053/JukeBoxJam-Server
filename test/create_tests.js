@@ -41,7 +41,7 @@ describe('Saving Records', (done)=> {
   })
 
   // test for saving playlists
-  it('Saves PlayList to DB', (done) =>{
+  it('Saves PlayList to DB', (done) => {
 
     //create authorized users array
     var auth = [];
@@ -54,8 +54,9 @@ describe('Saving Records', (done)=> {
       AuthUsers: auth
     })
 
-    testPlayList.save().then( =>{
+    testPlayList.save().then(() => {
       assert(testPlayList.isNew === false)
+      done()
     })
   })
 

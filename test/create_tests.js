@@ -8,7 +8,7 @@ let PlayList = info.playList;
 
 
 // Test for creation and saving of records
-describe('Saving Records', (done)=> {
+describe('Saving Records', () => {
 
   // Test for saving songs
   it('Saves Song to DB', (done) =>{
@@ -60,6 +60,6 @@ describe('Saving Records', (done)=> {
     })
   })
 
-  done()
+
 
 })

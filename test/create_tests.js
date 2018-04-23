@@ -59,7 +59,7 @@ describe('Saving Records', () => {
     })
   })
 
-  it('Updates playlist with new stuff' (done) => {
+  it('Updates playlist with new stuff', (done) => {
     Song.findOne(Title:'Pusherman', (err, songData) => {
       if(err) throw err
       PlayList.findOneAndUpdate(Name: 'Dope Beats',  {$addToSet: {SongList : songData}})

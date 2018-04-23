@@ -60,11 +60,14 @@ describe('Saving Records', () => {
   })
 
   it('Updates playlist with new stuff', (done) => {
-    Song.findOne(Title:'Pusherman', (err, songData) => {
-      if(err) throw err
-      PlayList.findOneAndUpdate(Name: 'Dope Beats',  {$addToSet: {SongList : songData}
+    var query = Song.where({Title: 'Pusherman'})
+    query.findOne((err, songData) =>{
+      if(err) throw err;
+      PlayList.findOneAndUpdate(Name: 'Dope Beats',  { $addToSet: { SongList : songData }
       }).then(()=>{
-      assert(PlayList.SongList.size() === 1)
+        assert(PlayList.SongList.size() === 1)
+      })
     })
-  }))
+  })
+  
 })

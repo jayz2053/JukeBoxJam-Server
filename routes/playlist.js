@@ -18,13 +18,29 @@ module.exports = (app, PlayList) =>{
   })
 
   //ROUTE FOR ADDITION OF SONG TO PLAYLIST
-  app.post('/playlist/:id', (req, res) =>{
+  app.post('/playlist/song/:id', (req, res) =>{
 
   })
 
+  //Route for addition of user to playlist
+  app.post('/playlist/user/:id/:user', (req, res) => {
 
+    var query = req.params.id.replace('-', ' ')
+
+    PlayList.fineOneAndUpdate({Name: query}, {$addToSet {AuthUsers: req.params.user}
+    }).then(
+      res.status(200).json({ sucess: true })
+    )
+  })
+
+  // Route for returning a playlist
   app.get('/playlist/:key', (req, res) =>{
+    var query = req.params.key.replace('-', ' ');
 
+    Playlist.findOne({Name: query}, (err, data) => {
+      if(err) throw err
+      res.json(data)
+    })
   })
 
 }

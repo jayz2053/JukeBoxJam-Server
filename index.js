@@ -1,17 +1,18 @@
-var express = require('express');
-var app = express();
-var dbInfo = require('./config/db.js');
-var albumArt = require('album-art');
-var bodyParser = require('body-parser');
+let express = require('express');
+let app = express();
+let dbInfo = require('./config/db.js');
+let albumArt = require('album-art');
+let bodyParser = require('body-parser');
+let socket = require('socket.io')
 
 //GET MONGOOSE STUFF IN ORDER
-var mongoose = require('mongoose');
-var models = require('./models/info.js');
-var Song = models.song;
-var PlayList = models.playlist;
-var User = models.User;
+let mongoose = require('mongoose');
+let models = require('./models/info.js');
+let Song = models.song;
+let PlayList = models.playlist;
+let User = models.user;
 
-var opts = {
+let opts = {
 	server: {
 		socketOptions: {keepAlive: 1}
 	}
@@ -42,8 +43,20 @@ require('./routes/users.js')(app, User)
 require('./routes/covers.js')(app, albumArt)
 
 
-app.listen(6024, function(){
+let server = app.listen(6024, function(){
 
 	console.log('Example app listening on port 6024!');
 
 	});
+
+// CHAT STUFF
+let io = socket(server);
+
+io.on('connection', socket => {
+	console.log('made connection')
+
+	socket.on('chat' msg => {
+		io.emit('chat', msg)
+	})
+
+});

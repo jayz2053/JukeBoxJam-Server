@@ -5,7 +5,7 @@ module.exports = (app, User) =>{
     User.find({Uname: req.params.uname}, (err, data) =>{
       if(err) throw err;
       if(data.Pword == req.params.pword)
-        res.status(200)
+        res.status(200).send("Success")
       else {
         res.status(500)
       }

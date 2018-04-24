@@ -27,7 +27,7 @@ module.exports = (app, PlayList) =>{
 
     var query = req.params.id.replace('-', ' ')
 
-    PlayList.fineOneAndUpdate({Name: query}, {$addToSet {AuthUsers: req.params.user}
+    PlayList.fineOneAndUpdate({Name: query}, {$addToSet : {AuthUsers: req.params.user}
     }).then(
       res.status(200).json({ sucess: true })
     )

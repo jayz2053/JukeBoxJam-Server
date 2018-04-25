@@ -56,7 +56,7 @@ io.on('connection', socket => {
 	console.log('made connection')
 
 	socket.on('chat', msg => {
-		io.emit('chat', msg)
+		io.sockets.emit('chat', msg)
 	})
 
 });

@@ -19,7 +19,10 @@ module.exports = (app, PlayList) =>{
 
   //ROUTE FOR ADDITION OF SONG TO PLAYLIST
   app.post('/playlist/song/:id', (req, res) =>{
+    var query = req.params.id.replace('-',' ')
 
+    PlayList.findOneAndUpdate({Name: query}, { $addToSet : {SongList : req.body}
+    }).then(res.status(200).json({ success : true }))
   })
 
   //Route for addition of user to playlist
@@ -29,7 +32,7 @@ module.exports = (app, PlayList) =>{
 
     PlayList.fineOneAndUpdate({Name: query}, {$addToSet : {AuthUsers: req.params.user}
     }).then(
-      res.status(200).json({ sucess: true })
+      res.status(200).json({ success: true })
     )
   })
 
